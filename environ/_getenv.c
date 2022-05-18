@@ -6,6 +6,8 @@
  * @name: the env name to look for in the environ
  * Return: return the env path or null 
  */
+extern char **environ;
+
 char *_getenv(const char *name)
 {
 	size_t i = 0, k = 0;

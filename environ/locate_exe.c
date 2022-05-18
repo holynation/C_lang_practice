@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 
+extern char **environ;
 /**
  * locate_path - this is to find a path in the environ variable
  * @name: name of the exec to find in the environment variable
