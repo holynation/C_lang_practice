@@ -2,8 +2,8 @@
 #include <stddef.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
 
-extern char **environ;
 /**
  * locate_path - this is to find a path in the environ variable
  * @name: name of the exec to find in the environment variable
@@ -21,6 +21,7 @@ char *locate_path(const char *name)
 
 	strtok(path, "="); /* PATH\0/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin */
 	dir_path = strtok(NULL, ":"); /* PATH=\0/usr/local/sbin\0/usr/local/bin:/usr/sbin:/usr/bin */
+
 	while (dir_path)
 	{
 		file_path = combine_path('/', dir_path, name);
@@ -32,6 +33,7 @@ char *locate_path(const char *name)
 
 		dir_path = strtok(NULL, ":");
 	}
+
 	free(path);
-	return (NULL);
+	return (file_path);
 }

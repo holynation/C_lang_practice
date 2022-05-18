@@ -12,11 +12,17 @@ char *_strdup(const char *str)
 	size_t len = 0;
 	char *new_str = NULL;
 
+	if (str == NULL) /* validate str input */
+		return (NULL);
+
 	while (str[i++])
 		;
 	len += i;
+	len++; /* add null terminator to length */
 
 	new_str = malloc(sizeof(char *) * (len + 1));
+	if (new_str == NULL)
+		return (NULL);
 
 	i = 0;
 	while (i <= len)

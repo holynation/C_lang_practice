@@ -6,28 +6,20 @@
  * @name: the env name to look for in the environ
  * Return: return the env path or null 
  */
-extern char **environ;
-
 char *_getenv(const char *name)
 {
-	size_t i = 0, k = 0;
+	size_t i = 0, j = 0;
 	char *env_val = NULL;
-
 
 	while (environ[i] != NULL)
 	{
 		env_val = environ[i];
-		k = 0;
-		while (env_val[k] == name[k] && env_val[k] != '=' && 
-			env_val[k] && name[k])
-		{
-			k++;
-		}
+		j = 0;
+		while (env_val[j] == name[j]) /* find desired env variable */
+			j++;
 
-		if (name[k] == '\0')
-		{
+		if (name[j] == '\0' && env_val[j] == '=')
 			return (_strdup(env_val));
-		}
 
 		i++;
 	}
